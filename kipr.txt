@@ -1,0 +1,60 @@
+
+//line follow    
+//wait_for_light();
+//shut_down_in(119);
+void line(){
+    while (1){
+        if(analog(0) >= 3800) {
+            motor(1, -50);
+            motor(0, -30);
+            msleep(5);
+        }
+        else if(analog(0) > 3000 && analog(0) < 3800){
+            motor(1, -50);
+            motor(0, -30);
+            msleep(5);
+        }
+       else {
+           motor(1, -45);
+           motor(0, -50);
+           msleep(5);
+       }
+    }
+ int get_servo_position(int port);             
+}
+?
+int main()
+{
+//Claw Code
+?
+        return 0;
+)
+
+int main()
+{
+    enable_servos();
+    //cross up down up repeat
+    //0-right arm 1-left arm 2-wrist 3-claw
+    //default pos -->arm 90 deg from ground
+    set_servo_position(0,0);
+    set_servo_position(1,2047);
+    set_servo_position(2,550);
+    msleep(3000);
+       //arm down
+    set_servo_position(0,1700);
+    set_servo_position(1,500);
+    //wrist parallel to ground
+    set_servo_position(2,2040);
+    //msleep(3000);
+     //claw open
+    set_servo_position(3,1400);
+    //msleep(3000);
+    //claw close
+    set_servo_position(3,2000);
+    //msleep(3000);
+    //arm up
+    set_servo_position(0,800);
+    set_servo_position(1,1200);     
+    
+    return 0;
+}
