@@ -1,0 +1,90 @@
+#include <kipr/botball.h>
+//analog(0) is left
+//analog(1) is right
+//motor(0) is left
+//motor(1) is right
+
+void TurnLeft(){
+   motor(1,100);
+   motor(0, 0);
+   msleep(2250);
+}
+
+void FindLine(){
+    while(analog(5) < 3900){
+        motor(0,100);
+        motor(1,100);
+        msleep(50);
+    }
+    motor(0,100);
+        motor(1,100);
+        msleep(50);
+    TurnLeft();
+}
+
+int fire(){
+    int blocks = 0;
+    int area = 0;
+    //    while((blocks == 0)){
+    camera_update();
+    if (get_object_count(0) > 0) {
+        area = get_object_area(0,0);
+        printf("block size %d\n", area);
+        if(area > 4000){
+            int x = get_object_center_x(0,0);
+            if (60<x && x<100) {
+                blocks ++;
+            }    
+        }
+    }
+
+    // }
+    return blocks;
+
+
+}
+void line(int n){
+    int count = 0;
+    while(count < n) {
+        if(analog(5) > 3600) {  
+            motor(0, 60);
+            motor(1, 40);
+        }
+        else {
+            motor(1, 60);
+            motor(0, 40);
+        }
+        msleep(100);
+        count ++;
+        printf(count + "\n");
+    }
+}
+
+int main()
+{
+    motor(0,500);
+    motor(1,500);
+    msleep(7500);
+    motor(1, 10);
+    motor(0, -1000);
+    msleep(1850);
+    motor(0,-500);
+    motor(1,-500);
+    msleep(2000);
+    
+    FindLine();
+    motor(0, 0);
+    motor(1, 0);
+    msleep(1000);
+    motor(0, 50);
+    motor(1, 50);
+    msleep(1000);
+    motor(0, 150);
+    motor(1, 50);
+    msleep(1000);
+    line(250);
+    set_servo_position(0, 1000);
+    msleep(1000);
+    
+      return 0;
+}
