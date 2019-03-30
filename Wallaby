@@ -1,0 +1,350 @@
+File: main.c
+#include <kipr/botball.h>
+//analog(0) is left
+//analog(1) is right
+//motor(0) is left
+//motor(1) is right
+​
+void TurnLeft(){
+   motor(1,100);
+   motor(0, 0);
+   msleep(2250);
+}
+​
+void FindLine(){
+    while(analog(5) < 3900){
+        motor(0,100);
+        motor(1,100);
+        msleep(50);
+    }
+    motor(0,100);
+        motor(1,100);
+        msleep(50);
+    TurnLeft();
+}
+​
+int fire(){
+    int blocks = 0;
+    int area = 0;
+    //    while((blocks == 0)){
+    camera_update();
+    if (get_object_count(0) > 0) {
+        area = get_object_area(0,0);
+        printf("block size %d\n", area);
+        if(area > 4000){
+            int x = get_object_center_x(0,0);
+            if (60<x && x<100) {
+                blocks ++;
+            }    
+        }
+    }
+​
+    // }
+    return blocks;
+​
+​
+}
+void line(int n){
+    int count = 0;
+    while(count < n) {
+        if(analog(5) > 3600) {  
+            motor(0, 60);
+            motor(1, 40);
+        }
+        else {
+            motor(1, 60);
+            motor(0, 40);
+        }
+        msleep(100);
+        count ++;
+        printf(count + "\n");
+    }
+}
+​
+int main()
+{
+    motor(0,500);
+    motor(1,500);
+    msleep(7500);
+    motor(1, 10);
+    motor(0, -1000);
+    msleep(1850);
+    motor(0,-500);
+    motor(1,-500);
+    msleep(2000);
+    
+    FindLine();
+    motor(0, 0);
+    motor(1, 0);
+    msleep(1000);
+    motor(0, 50);
+    motor(1, 50);
+    msleep(1000);
+    motor(0, 150);
+    motor(1, 50);
+    msleep(1000);
+    line(250);
+    set_servo_position(0, 1000);
+    msleep(1000);
+    
+    //msleep(1000);
+    //motor(1,100);
+    //motor(0,100);
+    //msleep(5000);
+    //  wait_for_light(0);
+    /*shut_down_in(119);
+    enable_servos();
+    set_servo_position(0, 2047);
+    set_servo_position(1, 1620);
+    camera_open_black();
+    camera_load_config("yellow.conf");
+​
+​
+    int black = 0;
+    int white = 0;
+        while (black != 2) {
+            motor(0,75);
+            motor(1,75);
+            msleep(100);
+            if (analog(0) < 3600) {
+                white = 1;
+            }
+            if (analog(0) > 3600 && white == 1) {
+                black++;
+                white = 0;
+            }
+​
+        }
+        motor(0,75);
+        motor(1,75);
+        msleep(500);
+        while (analog(1) < 3600) {
+            motor(0,75);
+            motor(1,0);
+            msleep(100);
+        }
+​
+    while (analog(0) < 3600){
+        if(analog(1) > 3600){
+            motor(1, 100);
+            motor(0, 75);
+            msleep(250);
+            // if black turn left
+        }
+        else if(analog(1) < 3500){
+            motor(0, 100);
+            motor(1, 75);
+            msleep(250);
+            //if white turn right
+        }
+    }
+    motor(1, 75);
+    motor(0,75);
+    msleep(1500);
+    //moves forward
+    motor(1, 10);
+    motor(0,-75);
+    msleep(750);
+    //turns left
+    motor(1, -75);
+    motor(0,-75);
+    msleep(1500);
+    //backs up    
+    motor(1, 50);
+    motor(0,0);
+    msleep(500);
+    //turns left
+    motor(1,0);
+    motor(0,-50);
+    msleep(850);
+    //turns left
+    motor(0,50);
+    motor(1,50);
+    msleep(2500);
+    motor(0,0);
+    motor(1,50);
+    msleep(250);
+    motor(0,0);
+    motor(1,0);
+    set_servo_position(0,400);
+    msleep(1000);
+    motor(1,-50);
+    motor(0,-50);
+    msleep(3000);
+    motor(0,0);
+    set_servo_position(1,532);
+    while (analog(0) < 3600){
+        motor(1,50);
+    }
+    int x;
+    for (x = 0; x < 4; x++) {
+​
+        while(analog(0) > 3600){
+            motor(1, 75);
+            motor(0, 100);
+            msleep(250);
+        }
+        while(analog(0) < 3600){
+            motor(1, 100);
+            motor(0, 75);
+            msleep(250);
+            //if white turn right
+        }
+​
+    }
+    motor(1,0);
+    motor(0,-100);
+    msleep(3400);
+    motor(1,-75);
+    motor(0,-75);
+    msleep(4500);
+    //in frisbee getting position
+    motor(0,40);
+    motor(1,40);
+    msleep(1000);
+​
+    motor(0,50);
+    motor(1,-50);//turn to face frisbee
+    msleep(1850);
+​
+    ao();
+    msleep(200);
+​
+    set_servo_position(2,1900); 
+    msleep(500);
+    int noomba = 0;
+    while(noomba < 1){
+        if(analog(4) < 2900){
+            motor(0, -20);
+            motor(1, -80);
+            msleep(300);
+            motor(1,-20);
+            motor(0,-80);
+            msleep(400);
+        }
+        else{
+            motor(0,-50);
+            motor(1,-50);
+            msleep(500);
+            motor(0,0);
+            motor(1,0);
+            msleep(1000);
+            while(get_servo_position(2) > 1800){//THIS IS TO SLOWLY MOVE THE ARM UP
+                set_servo_position(2, get_servo_position(2) - 10);
+                msleep(250);
+            }
+            noomba ++;
+        }
+    }
+​
+    black = 0;
+    white = 0;
+        while (black != 2) {
+            motor(0,80);
+            motor(1,90);
+            msleep(100);
+            if (analog(0) < 3600) {
+                white = 1;
+            }
+            if (analog(0) > 3600 && white == 1) {
+                black++;
+                white = 0;
+            }
+​
+        }
+​
+    motor(0,-100);
+    motor(1,0);
+    msleep(750);
+    while(analog(1) < 3600) {
+        motor(1,75);
+        motor(0,75);
+        msleep(10);
+    }
+    ao();
+    line();
+​
+    ao();*/
+    /*
+    motor(1,75);
+    motor(1,75);
+    msleep(1000);
+    ao();
+    msleep(500);
+​
+    while (analog(1) < 3600) {
+        motor(1,75);
+        motor(0,0);
+        msleep(50);
+    }    
+    motor(0,75);
+    motor(1,75);
+    msleep(500);
+    motor(0,0);
+    motor(1,0);
+    msleep(250);
+​
+    while(analog(0) < 3600) {
+        motor(0,75);
+        motor(1,30);
+        msleep(100);
+    }
+    motor(0,-75);
+    motor(1,-75);
+    msleep(250);
+    motor(0,0);
+    motor(1,-75);
+    msleep(4000);
+    motor(0,-75);
+    motor(1,-75);
+    msleep(2000);
+    while(analog(0) < 3600) {
+        motor(0,0);
+        motor(1,75);
+        msleep(50);
+    }
+    while (1 == 1);
+    if(analog(0) > 3600){
+        motor(0, -100);
+        motor(1, -10);
+        msleep(250);
+            // if black turn left
+    }
+    else if(analog(0) < 3500){
+        motor(0, -10);
+        motor(1, -100);
+        msleep(250);
+            //if white turn right
+    }*/
+​
+    /* int x = 0;
+    while(x < 10){
+        if(analog(0) > 3500){
+            while(analog(1) < 3500) {
+                motor(0,10);
+                motor(1,40);
+                msleep(150);
+                x++;
+            }    
+        }
+        else if(analog(1) > 3500){
+            while(analog(0) < 3500) {
+                motor(1,10);
+                motor(0,40);
+                msleep(150);
+                x++;
+            }
+        }
+    }    
+​
+*/
+    return 0;
+}
+​
+Project Explorer
+
+ Add Project
+testing
+Source Files
+ main.c
+Copyright © 2015 KISS Insitute for Practical Robotics
