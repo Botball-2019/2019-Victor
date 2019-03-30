@@ -1,0 +1,40 @@
+ void inrange{
+        create_drive_direct(100,100);
+        //ex. value = 60
+        if(get_object_center_y(0,0) = 60 ){
+            create_drive_direct(0,0);
+        }
+    }
+    void raise{
+        //raiseclaw code
+    }
+    
+    void grab{
+        //grab code
+    }
+    
+    camera_open();
+    
+//stop when biggest RED object is at center(botguy)         
+        if(get_object_center_x(0,0) = 80){
+            create_drive_direct(0,0);
+            msleep(3000);
+            //get in range for claw
+            inrange();
+            //raise claw
+            raise();
+            //grab
+            grab();
+        }
+        
+//stop when biggest BLUE object is at center(mayor)
+        if(get_object_center_x(1,0) = 80){
+            create_drive_direct(0,0);
+            msleep(3000);
+            //get in range for claw
+            inrange();
+            //raise claw
+            raise();
+            //grab
+            grab();
+        }
