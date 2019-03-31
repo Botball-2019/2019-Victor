@@ -1,0 +1,31 @@
+#include <kipr/botball.h>
+//line follow    
+//wait_for_light();
+//shut_down_in(119);
+void line(){
+    while (1){
+        if(analog(0) >= 3800) {
+            motor(1, -50);
+            motor(0, -30);
+            msleep(5);
+        }
+        else if(analog(0) > 3000 && analog(0) < 3800){
+            motor(1, -50);
+            motor(0, -30);
+            msleep(5);
+        }
+       else {
+           motor(1, -45);
+           motor(0, -50);
+           msleep(5);
+       }
+    }
+ int get_servo_position(int port);             
+}
+
+int main()
+{
+//Claw Code
+
+        return 0;
+}
