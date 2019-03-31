@@ -1,0 +1,34 @@
+#include <kipr/botball.h>
+
+//
+void lift_claw () {
+  mrp(3,500,50);
+}
+
+void tower_approach () {
+  motor(0,500);
+  motor(1, 500);
+  msleep(1000);
+  ao();
+}
+
+void close_claw () {
+   set_servo_position(1,2000);
+}
+
+void drop_top () {
+  set_servo_position(1,1700);
+
+}
+  
+  
+int main () {
+
+  tower_approach ();
+  close_claw ();
+  lift_claw();
+  tower_approach ();
+  drop_top ();
+
+
+}
