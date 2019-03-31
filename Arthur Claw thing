@@ -2,16 +2,30 @@
 
 //
 void lift_claw () {
-  mrp(3,500,50);
+  mrp(3,500,10000);
+  msleep(3000);
+    ao();
 }
 
 void tower_approach () {
-  motor(0,500);
-  motor(1, 500);
-  msleep(1000);
+  //motor(0,50);
+  //motor(1, 45);
+  //msleep(1000);
+  //mrp(0, 500, 10000);
+  //mrp(1, 500, 10000);
+    msleep(1000);
+    mav (1,1000);
+    mav (0,1000);
+    //mrp(0,1000,11000);
+    msleep(2000);
   ao();
 }
 
+void tower_approach2 () {
+    mav (1,700);
+    mav (0,700);
+    msleep(1000);
+}
 void close_claw () {
    set_servo_position(1,2000);
 }
@@ -20,15 +34,42 @@ void drop_top () {
   set_servo_position(1,1700);
 
 }
-  
+
+void change_tower () {
+	motor(0,-50);
+    motor(1,50);
+    msleep (2000);
+    motor(0,-2000);
+    motor(1,-2000);
+    msleep(3000);
+    motor(0,50);
+    motor(1,-50);
+    msleep(2000);
+void camcam () {
+    
+}
+    
+    
+    
+}
   
 int main () {
+	//change_tower ();
+  //tower_approach ();
+  //msleep (400);
+  //close_claw ();
+ // lift_claw();
+  //tower_approach2 ();
+  //drop_top ();
+    camera_open();
+    camera_update();
+    //get_object_count();
+    while (1) {
+        camera_update();
+        //get_object_count();
+        printf ((char)get_object_count(0));
+        printf ('blah'); 
+    }
 
-  tower_approach ();
-  close_claw ();
-  lift_claw();
-  tower_approach ();
-  drop_top ();
-
-
+	return 0;
 }
