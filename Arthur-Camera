@@ -1,0 +1,13 @@
+ camera_open();
+   while (1){
+	camera_update();
+       
+       if (get_object_count(0) > 0){
+    	printf (".");
+           motor(0,1000);
+       }
+       else {
+           printf  ("x");
+           ao();
+       }
+   }
