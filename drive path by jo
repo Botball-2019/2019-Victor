@@ -1,0 +1,140 @@
+#include <kipr/botball.h>
+
+int main()
+{
+    while(analog(5)< 300){ 
+        printf(".");
+    }
+    shut_down_in(119);
+    create_connect();
+   
+    create_drive_direct(250,250);
+    msleep(1000);
+    
+    create_drive_direct(-250,-250);
+    msleep(600);
+    
+    
+    create_drive_direct(200,-200);
+    msleep(900);
+    
+    create_drive_direct(250,250);
+    msleep(3800);
+    
+    create_drive_direct(-200,200);
+    msleep(950);
+   
+       
+    create_drive_direct(-100,-100);
+    msleep(2500);
+       
+    create_drive_direct(200,200);
+    msleep(2750);
+    
+     create_drive_direct(-200,200);
+     msleep(900);
+    
+    create_drive_direct(-100,-100);
+    msleep(3300);
+    
+    create_drive_direct(0,0);
+    msleep(900);
+    
+    motor(0,-100);
+    msleep(600);
+    
+    ao();
+    
+    create_drive_direct(200,200);
+    msleep(8200);
+    
+    create_drive_direct(0,0);
+    msleep(0);
+    
+    motor(0,100);
+    msleep(600);
+    
+    ao();
+    
+    
+
+    create_drive_direct(0,0);
+    msleep(450);
+    
+    create_drive_direct(200,-200);
+    msleep(450);
+    
+    create_drive_direct(150,150);
+    msleep(1250);
+    
+    create_drive_direct(-200,200);
+    msleep(450);
+    
+    create_drive_direct(-200,-200);
+    msleep(5900);
+    
+    create_drive_direct(-50,-50);
+    msleep(200);
+    
+    create_drive_direct(500,500);
+    msleep(500);
+    
+    create_drive_direct(0,0);
+    msleep(200);
+    
+    create_drive_direct(200,200);
+    msleep(500);
+  
+    create_drive_direct(200,-200);
+    msleep(900);
+    
+    create_drive_direct(-200,-200);
+    msleep(1500);
+     
+    create_drive_direct(200,-200);
+    msleep(900);   
+    
+    create_drive_direct(200,200);
+    msleep(1400);
+    
+    create_drive_direct(-200,200);
+    msleep(900);
+    
+    create_drive_direct(0,0);
+    msleep(900);
+    
+    motor(0,-100);
+    msleep(500);
+    
+    ao();
+    
+    create_drive_direct(0,0);
+    msleep(500);
+    
+    create_drive_direct(200,200);
+    msleep(2000);
+    
+    create_drive_direct(-200,-200);
+    msleep(3000);
+    
+    create_drive_direct(0,0);
+    msleep(900);
+    
+    motor(0,100);
+    msleep(500);
+    
+    ao();
+    
+    create_drive_direct(0,0);
+    msleep(900);
+    
+    create_drive_direct(-200,200);
+    msleep(1000);
+    
+    create_drive_direct(200,200);
+    msleep(4000);
+    
+          
+    create_disconnect();
+    return 0;
+}
