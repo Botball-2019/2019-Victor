@@ -6,7 +6,27 @@ void lift_claw () {
   msleep(3000);
     ao();
 }
-
+ void inrange{
+  create_drive_direct(100,100);
+  //ex. value = 60
+  if(get_object_center_y(0,0) = 60 ){
+  create_drive_direct(0,0);
+        }
+    }
+    
+    camera_open();
+    
+//stop when biggest RED object is at center(botguy)         
+        if(get_object_center_x(0,0) = 80){
+            create_drive_direct(0,0);
+            msleep(3000);
+            //get in range for claw
+            inrange();
+            //raise claw
+            raise();
+            //grab
+            grab();
+        }
 void tower_approach () {
   //motor(0,50);
   //motor(1, 45);
@@ -69,6 +89,16 @@ int main () {
         //get_object_count();
         printf ((char)get_object_count(0));
         printf ('blah'); 
+//stop when biggest RED object is at center(botguy)         
+    if(get_object_center_x(0,0) = 80){
+    create_drive_direct(0,0);
+    msleep(3000);
+    //get in range for claw
+    inrange();
+            //raise claw
+            raise();
+            //grab
+            grab();
     }
 
 	return 0;
