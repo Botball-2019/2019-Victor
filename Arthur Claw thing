@@ -56,7 +56,7 @@ void drop_top () {
 }
 
 void change_tower () {
-	motor(0,-50);
+    motor(0,-50);
     motor(1,50);
     msleep (2000);
     motor(0,-2000);
