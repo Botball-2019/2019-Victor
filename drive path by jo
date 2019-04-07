@@ -71,10 +71,8 @@ int main()
     msleep(450);
     
     create_drive_direct(-200,-200);
-    msleep(5900);
-    
-    create_drive_direct(-50,-50);
-    msleep(200);
+    msleep(6000);
+ 
     
     create_drive_direct(500,500);
     msleep(500);
@@ -134,6 +132,41 @@ int main()
     create_drive_direct(200,200);
     msleep(4000);
     
+    create_drive_direct(200,-200);
+    msleep(1800);
+    
+    create_drive_direct(-200,200);
+    msleep(1800);
+    
+    create_drive_direct(200,-200);
+    msleep(1800);
+    
+    create_drive_direct(-200,200);
+    msleep(1800);
+    
+    create_drive_direct(200,-200);
+    msleep(1800);
+    
+    create_drive_direct(-200,200);
+    msleep(1800);
+    
+    create_drive_direct(200,-200);
+    msleep(1800);
+    
+    create_drive_direct(-200,200);
+    msleep(900);
+    
+    create_drive_direct(-200,-200);
+    msleep(900);
+    
+    create_drive_direct(200,200);
+    msleep(900);
+    
+    create_drive_direct(-200,200);
+    msleep(900);
+    
+    create_drive_direct(200,200);
+    msleep(450);
           
     create_disconnect();
     return 0;
