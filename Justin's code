@@ -5,27 +5,36 @@
 //motor(1) is right
 
 void TurnLeft(){
-   motor(1,100);
-   motor(0, 0);
-   msleep(2250);
+    motor(1,250);
+    motor(0, -10);
+    msleep(2400);
 }
-
+void stop(){
+    motor(0,0);
+    motor(1,0);
+    msleep(1000);
+}
 void FindLine(){
-    while(analog(5) < 3900){
+    if(analog(5) < 3700){
         motor(0,100);
         motor(1,100);
-        msleep(50);
+        msleep(6000);
+        printf("skin\n");
+
     }
-    motor(0,100);
-        motor(1,100);
-        msleep(50);
     TurnLeft();
+    motor(0,200);
+    motor(1,100);
+    msleep(50);  
+    printf("found line\n");
+	stop();
 }
 
 int fire(){
     int blocks = 0;
     int area = 0;
     //    while((blocks == 0)){
+    camera_open();
     camera_update();
     if (get_object_count(0) > 0) {
         area = get_object_area(0,0);
@@ -33,58 +42,109 @@ int fire(){
         if(area > 4000){
             int x = get_object_center_x(0,0);
             if (60<x && x<100) {
-                blocks ++;
+                //blocks ++;
+                camera_close();
             }    
         }
     }
 
     // }
     return blocks;
-
-
 }
 void line(int n){
     int count = 0;
     while(count < n) {
-        if(analog(5) > 3600) {  
-            motor(0, 60);
-            motor(1, 40);
+        if(analog(5) < 3600) {  
+            motor(0, 40);
+            motor(1, 60);
+            printf(".");
+
         }
         else {
-            motor(1, 60);
-            motor(0, 40);
+            motor(1, 40);
+            motor(0, 60);
         }
         msleep(100);
         count ++;
         printf(count + "\n");
     }
 }
+//void camera(){}
+void close_claw() {
+    enable_servos();
+    int a;
+    a = 1600;
+    while(a > 1200){   
+        set_servo_position(0, a);
+        msleep(100);
+        a = a - 20;    
+    }
+    disable_servos(0);
+} 
+
 
 int main()
 {
-    motor(0,500);
-    motor(1,500);
-    msleep(7500);
+    //shut_down_in(119000);
+    //wait_for light(4);
+    
+    motor(0,550);
+    motor(1,550);
+    msleep(8500);
     motor(1, 10);
     motor(0, -1000);
-    msleep(1850);
+    msleep(1800);
     motor(0,-500);
     motor(1,-500);
     msleep(2000);
-    
+
     FindLine();
     motor(0, 0);
     motor(1, 0);
     msleep(1000);
-    motor(0, 50);
-    motor(1, 50);
-    msleep(1000);
-    motor(0, 150);
-    motor(1, 50);
-    msleep(1000);
-    line(250);
-    set_servo_position(0, 1000);
-    msleep(1000);
     
-      return 0;
-}
+    //motor(0, 50);
+    //motor(1, 50);
+    //msleep(1000);
+    //motor(0, 150);
+    //motor(1, 50);
+    //msleep(1000);
+    line(160);
+    motor(0, 0);
+    motor(1, 0);
+    msleep(1000);
+    close_claw();
+    //set_servo_position(0, 1000);
+    //msleep(1000);
+    motor(2, -200);
+    msleep(2000);
+    
+    camera_open();
+    camera_update();
+    
+    if (get_object_count(0) > 0){
+        motor(0, 100);
+        motor(1, 100);
+        msleep(2000);
+        
+        motor(0,100);
+        motor(1,100);
+    	msleep(1000);
+        //open claw
+    }
+    else {
+        motor(0, 100);
+        motor(1, 100);
+        msleep(1000);
+        
+        motor(0, -100);
+        motor(1, 100);
+        msleep(1000);
+    }
+        
+        
+
+    
+    
+    
+    
