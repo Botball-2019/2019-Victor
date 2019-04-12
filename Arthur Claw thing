@@ -6,27 +6,8 @@ void lift_claw () {
   msleep(3000);
     ao();
 }
- void inrange{
-  create_drive_direct(100,100);
-  //ex. value = 60
-  if(get_object_center_y(0,0) = 60 ){
-  create_drive_direct(0,0);
-        }
-    }
-    
-    camera_open();
-    
-//stop when biggest RED object is at center(botguy)         
-        if(get_object_center_x(0,0) = 80){
-            create_drive_direct(0,0);
-            msleep(3000);
-            //get in range for claw
-            inrange();
-            //raise claw
-            raise();
-            //grab
-            grab();
-        }
+
+
 void tower_approach () {
   //motor(0,50);
   //motor(1, 45);
@@ -42,12 +23,22 @@ void tower_approach () {
 }
 
 void tower_approach2 () {
-    mav (1,700);
-    mav (0,700);
+    mav (1,1200);
+    mav (0,1200);
     msleep(1000);
 }
-void close_claw () {
-   set_servo_position(1,2000);
+
+//open fast
+void open_claw() {
+    enable_servos();
+    int a;
+    a = 300;
+    while(a < 800){   
+        set_servo_position(0, a);
+        msleep(75);
+        a = a + 50;    
+    }
+    disable_servos(0);
 }
 
 void drop_top () {
@@ -55,8 +46,11 @@ void drop_top () {
 
 }
 
+
+
+
 void change_tower () {
-	motor(0,-50);
+    motor(0,-50);
     motor(1,50);
     msleep (2000);
     motor(0,-2000);
@@ -74,6 +68,37 @@ void camcam () {
 }
   
 int main () {
+	 camera_open();
+   while (1){
+	camera_update();
+       
+       if (get_object_count(0) > 0){
+    	printf (".");
+	tower_approach2 ();
+	open_claw();
+	
+        
+       }
+       else {
+           printf  ("x");
+           change_tower ();
+	   open_claw();
+	   
+	   
+	   ao();
+	   
+       }
+   }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//change_tower ();
   //tower_approach ();
   //msleep (400);
