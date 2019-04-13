@@ -1,0 +1,218 @@
+#include <kipr/botball.h>
+//scroll to bottom fo rhow to work on this code - thanks joaquim
+int main()
+{
+    while(analog(5)< 300){ 
+        printf("............t");
+    }
+    shut_down_in(119);
+    create_connect();
+
+    get_create_battery_capacity();
+	//backup
+    create_drive_direct(-100,-100);
+    msleep(1000);
+    //push ambulance
+    create_drive_direct(250,250);
+    msleep(1300);
+	//go back 
+    create_drive_direct(-250,-250);
+    msleep(500);
+	//turn right
+    create_drive_direct(200,-200);
+    msleep(950);
+	//forward to first square up
+    create_drive_direct(250,250);
+    msleep(3350);
+//turn left
+    create_drive_direct(-200,200);
+    msleep(900);
+
+//first square up
+    create_drive_direct(-100,-100);
+    msleep(2500);
+//forward
+    create_drive_direct(200,200);
+    msleep(2700);
+//turn left
+    create_drive_direct(-200,200);
+    msleep(950);
+//2nd square up
+    create_drive_direct(-100,-100);
+    msleep(2200);
+//stop 
+    create_drive_direct(0,0);
+    msleep(900);
+//claw down
+    motor(0,-50);
+    msleep(600);
+
+    ao();
+
+
+
+
+//collect medical supply
+    create_drive_direct(200,200);
+    msleep(8200);
+//push into box
+    create_drive_direct(0,0);
+    msleep(200);
+    
+    
+    
+//claw up
+    motor(0,50);
+    msleep(1000);
+
+    ao();
+    //stop
+    create_drive_direct(0,0);
+    msleep(100);
+//push it into box
+    create_drive_direct(100,100);
+    msleep(1500);
+
+    create_drive_direct(-100,-100);
+    msleep(1500);
+
+    create_drive_direct(200,-200);
+    msleep(450);
+
+    create_drive_direct(100,100);
+    msleep(1600);
+
+    create_drive_direct(-200,200);
+    msleep(460);
+//get pom
+    create_drive_direct(-200,-200);
+    msleep(6200);
+
+    create_drive_direct(200,-200);
+    msleep(900);
+
+    create_drive_direct(-200,-200);
+    msleep(700);
+
+    create_drive_direct(200,-200);
+    msleep(950);
+//go back to box
+    create_drive_direct(-200,-200);
+    msleep(7000);
+
+    create_drive_direct(100,-300);
+    msleep(500);
+
+    create_drive_direct(0,0);
+    msleep(200);
+
+    create_drive_direct(500,500);
+    msleep(1000);
+    
+    create_drive_direct(200,-200);
+    msleep(1900);
+    
+    create_drive_direct(200,200);
+    msleep(1150);
+        
+    create_drive_direct(100,-100);
+    msleep(1000);
+
+    
+    create_drive_direct(-100,100);
+    msleep(1500);
+ 
+    
+    create_drive_direct(-200,-200);
+    msleep(2000);
+
+    create_drive_direct(-200,200);
+    msleep(280);
+    
+    create_drive_direct(200,200);
+    msleep(1200);
+    
+    create_drive_direct(200,0);
+    msleep(2000);
+    
+    create_drive_direct(-200,0);
+    msleep(2000);
+    
+    create_drive_direct(200,200);
+    msleep(1000);
+    
+    create_drive_direct(100,-100);
+    msleep(3600);
+    
+    create_drive_direct(-100,100);
+    msleep(3000);
+    
+    create_drive_direct(100,-100);
+    msleep(3000);
+    
+    create_drive_direct(-100,100);
+    msleep(3000);
+    
+    create_drive_direct(100,-100);
+    msleep(3000);
+    
+    create_drive_direct(-100,100);
+    msleep(3000);
+    
+    create_drive_direct(100,-100);
+    msleep(1500);
+    
+    create_drive_direct(100,100);
+    msleep(900);
+    
+    create_drive_direct(-100,0);
+    msleep(3000);
+    
+    create_drive_direct(-100,-100);
+    msleep(3000);
+    
+    create_drive_direct(200,200);
+    msleep(1500);
+    
+    create_drive_direct(-100,-100);
+    msleep(1000);
+    
+    create_drive_direct(200,-200);
+    msleep(900);
+    
+    create_drive_direct(200,200);
+    msleep(1500);
+    
+    create_drive_direct(-200,200);
+    msleep(900);
+    
+    create_drive_direct(200,200);
+    msleep(1500);
+    
+     create_drive_direct(-200,200);
+    msleep(900);
+    
+    create_drive_direct(200,200);
+    msleep(1500);
+    
+    create_drive_direct(-200,-200);
+    msleep(3000);
+    
+    create_drive_direct(200,-200);
+    msleep(900);
+    
+    create_drive_direct(-200,-200);
+    msleep(3000);
+
+    return 0;
+}
+
+/*if im at practice look here we need to focuse on the ending of the process make 
+sure it works with all the objecrts on the board somthing 
+is bound to go wrong so problem solve!
+at the end check if we get points to bring it back to the starting box. we 
+need this all to be done so rerun rerun until everything works five times in a row then we are done! 
+work on making sure everything is upto date
+legal and finished 
+
+ps the yellow block part doesnt work consistantly rn/*
